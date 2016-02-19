@@ -7,18 +7,42 @@ const selector = (state) => ({
 })
 
 class App extends Component {
+  constructor (props, context) {
+    super(props, context)
+
+    this.state = {
+      text: ''
+    }
+  }
+
+  handleUpdate (event) {
+    this.setState({
+      text: event.target.value
+    })
+  }
+
+  addTodo () {
+    this.props.actions.addTodo(this.state.text)
+    this.setState({
+      text: ''
+    })
+  }
+
   render () {
-    const { actions, testActions } = this.props
+    const { actions, todo } = this.props
 
     return <div className='ui container'>
-      <button className='ui primary button' onClick={actions.addTest}>Set Test</button>
-      <button className='ui button' onClick={actions.unTest}>Unset Test</button>
-      <div>
-        {testActions.test
-          ? <i className='big green checkmark icon'></i>
-        : <i className='big red remove icon'></i>
-        }
+      <button className='ui red button' onClick={actions.clearTodos}>Clear</button>
+      <button className='ui green button' onClick={::this.addTodo}>Add</button>
+      <div className='ui input'>
+        <input type='text' value={this.state.text} onChange={::this.handleUpdate} placeholder='TODO item'/>
       </div>
+
+      <ul className='ui list'>
+        {todo.todos.map((t) =>
+          <li className='ui item' key={t}>{t}</li>)
+        }
+      </ul>
     </div>
   }
 }

@@ -1,4 +1,4 @@
 import { packageActions } from 'redux-reaction'
-import testActions from './test'
+import todo from './todo'
 
-export default packageActions({ testActions })
+export default packageActions({ todo })
