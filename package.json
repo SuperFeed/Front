@@ -14,7 +14,9 @@
   "scripts": {
     "test": "standard | snazzy",
     "start": "webpack-dev-server --history-api-fallback --hot --inline --progress --colors --port 3000",
-    "build": "NODE_ENV=production webpack --progress --colors"
+    "prebuild": "rm -rf target",
+    "build": "NODE_ENV=production webpack -p --progress --colors",
+    "postbuild": "cp resources/* target"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",

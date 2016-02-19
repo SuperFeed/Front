@@ -1,19 +1,8 @@
 language: node_js
 
 node_js:
-    - stable
-
-sudo: false
-
-before_install:
-    - npm install -g gulp
-
-install:
-    - npm install
-
-script:
-    - npm test
-    - gulp
+  - stable
 
 after_success:
-    - bash script/deploy
+  - npm run build
+  - bash script/deploy

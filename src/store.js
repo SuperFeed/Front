@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import promiseMiddleware from 'redux-promise';
+import promiseMiddleware from 'redux-promise'
 import DevTools from './DevTools'
 import re from './actions'
 
