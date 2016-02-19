@@ -3,6 +3,10 @@ language: node_js
 node_js:
   - stable
 
-after_success:
+before_deploy:
   - npm run build
-  - bash script/deploy
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: script/deploy
