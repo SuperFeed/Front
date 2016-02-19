@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import re from './actions'
+import { SF_API } from './api'
 
 const selector = (state) => ({
   ...state
@@ -11,8 +12,15 @@ class App extends Component {
     super(props, context)
 
     this.state = {
-      text: ''
+      text: '',
+      sfVersion: ''
     }
+  }
+
+  async componentDidMount () {
+    let { version: sfVersion } = await SF_API.get('version')
+
+    this.setState({ sfVersion })
   }
 
   handleUpdate (event) {
@@ -32,6 +40,7 @@ class App extends Component {
     const { actions, todo } = this.props
 
     return <div className='ui container'>
+      <h1>SuperFeed Version: {this.state.sfVersion}</h1>
       <button className='ui red button' onClick={actions.clearTodos}>Clear</button>
       <button className='ui green button' onClick={::this.addTodo}>Add</button>
       <div className='ui input'>
