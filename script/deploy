@@ -1,0 +1,11 @@
+#!/bin/sh
+if [[ "$TRAVIS_BRANCH" == "master" ]]; then
+    cd target
+    git init
+    git config user.name "Travis CI"
+    git config user.email "rrdelaney@outlook.com"
+    git remote add deploy https://${GITHUB_TOKEN}@github.com/SuperFeed/Front
+    git add --all
+    git commit -m "Travis CI Build"
+    git push --force --quiet -u deploy master:gh-pages
+fi
