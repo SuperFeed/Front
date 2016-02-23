@@ -14,8 +14,8 @@
   "scripts": {
     "test": "standard | snazzy",
     "start": "webpack-dev-server --history-api-fallback --hot --inline --progress --colors --port 3000",
-    "prebuild": "rm -rf target",
-    "build": "NODE_ENV=production webpack -p --progress --colors",
+    "prebuild": "rimraf target",
+    "build": "cross-env NODE_ENV=production webpack -p --progress --colors",
     "postbuild": "cp resources/* target"
   },
   "devDependencies": {
@@ -29,13 +29,17 @@
     "babel-preset-react-hmre": "^1.1.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-runtime": "^6.5.0",
+    "cross-env": "^1.0.7",
     "css-loader": "^0.23.1",
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.9.0",
     "json-loader": "^0.5.4",
+    "mkdirp": "^0.5.1",
+    "parallelshell": "^2.0.0",
     "redux-devtools": "^3.1.1",
     "redux-devtools-dock-monitor": "^1.0.1",
     "redux-devtools-log-monitor": "^1.0.4",
+    "rimraf": "^2.5.2",
     "snazzy": "^3.0.0",
     "standard": "^6.0.5",
     "style-loader": "^0.13.0",
