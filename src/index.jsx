@@ -1,20 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
+import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import 'semantic-ui-css/semantic.css'
 
-import DevTools from './DevTools'
-import configureStore from './store'
+import Container, { configureStore } from './Container'
 import App from './App'
+import Login from './Login'
 
-const store = configureStore()
-
-const SuperFeed = <Provider store={store}>
-  <div>
-    {process.env.NODE_ENV !== 'production' ? <DevTools /> : null}
-    <App />
-  </div>
-</Provider>
+const SuperFeed = <Container store={configureStore()}>
+    <Router history={browserHistory}>
+      <Route path='/'>
+        <IndexRoute component={App} />
+        <Route path='/login' component={Login} />
+      </Route>
+    </Router>
+</Container>
 
 window.onload = () => {
   if (document.getElementById('root') === null) {

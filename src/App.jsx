@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router'
 import re from './actions'
 import { SF_API } from './api'
 
@@ -41,6 +42,7 @@ class App extends Component {
 
     return <div className='ui container'>
       <h1>SuperFeed Version: {this.state.sfVersion}</h1>
+      <Link to='/login'>Login</Link>
       <button className='ui red button' onClick={actions.clearTodos}>Clear</button>
       <button className='ui green button' onClick={::this.addTodo}>Add</button>
       <div className='ui input'>
