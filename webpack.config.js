@@ -13,7 +13,7 @@ module.exports = {
     path: 'target',
     filename: 'app.js'
   },
-  devtool:  process.env.NODE_ENV !== 'production' ? '#eval-source-map' : '',
+  devtool: process.env.NODE_ENV !== 'production' ? '#eval-source-map' : '',
   module: {
     loaders: [
       {

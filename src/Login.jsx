@@ -8,7 +8,7 @@ const APP_ID = process.env.NODE_ENV === 'production'
 export default function Login () {
   return <FacebookLogin
     appId={APP_ID}
-    autoLoad={true}
-    callback={_ => console.log(_)}
+    autoLoad
+    callback={(_) => console.log(_)}
   />
 }

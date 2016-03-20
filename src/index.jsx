@@ -8,12 +8,12 @@ import App from './App'
 import Login from './Login'
 
 const SuperFeed = <Container store={configureStore()}>
-    <Router history={browserHistory}>
-      <Route path='/'>
-        <IndexRoute component={App} />
-        <Route path='/login' component={Login} />
-      </Route>
-    </Router>
+  <Router history={browserHistory}>
+    <Route path='/'>
+      <IndexRoute component={App} />
+      <Route path='/login' component={Login} />
+    </Route>
+  </Router>
 </Container>
 
 window.onload = () => {
