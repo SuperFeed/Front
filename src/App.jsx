@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import re from './actions'
+import re, { selector } from './actions'
 import { SF_API } from './api'
 
-const selector = (state) => ({
-  ...state
-})
-
-class App extends Component {
+@connect(selector, re.action)
+export default class App extends Component {
   constructor (props, context) {
     super(props, context)
 
@@ -57,5 +54,3 @@ class App extends Component {
     </div>
   }
 }
-
-export default connect(selector, re.action)(App)
