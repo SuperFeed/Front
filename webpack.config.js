@@ -46,7 +46,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'SuperFeed'
+      title: 'SuperFeed',
+      inject: false,
+      appMountId: 'root',
+      template: 'node_modules/html-webpack-template/index.ejs',
+      mobile: true
     }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') }

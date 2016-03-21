@@ -8,7 +8,7 @@ import promiseMiddleware from 'redux-promise'
 import re from './actions'
 
 const Devtools = createDevTools(
-  <DockMonitor toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q' changeMonitorKey='ctrl-m'>
+  <DockMonitor fluid={true} defaultSize={.3} toggleVisibilityKey='ctrl-h' changePositionKey='ctrl-q' changeMonitorKey='ctrl-m'>
     <LogMonitor theme='tomorrow' />
   </DockMonitor>
 )

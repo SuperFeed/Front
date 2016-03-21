@@ -16,12 +16,4 @@ const SuperFeed = <Container store={configureStore()}>
   </Router>
 </Container>
 
-window.onload = () => {
-  if (document.getElementById('root') === null) {
-    let reactRoot = document.createElement('div')
-    reactRoot.id = 'root'
-    document.body.appendChild(reactRoot)
-  }
-
-  ReactDOM.render(SuperFeed, document.getElementById('root'))
-}
+ReactDOM.render(SuperFeed, document.getElementById('root'))
