@@ -26,13 +26,13 @@ module.exports = {
       }, {
         test: /\.css$/,
         loader: 'style!css-loader?modules',
-        exclude: /node_modules/
+        exclude: /(node_modules|static)/
       }, {
         test: /\.css$/,
         loader: 'style!css-loader',
         exclude: /src/
       }, {
-        test: /\.(ttf|eot|svg|png)$/,
+        test: /\.(ttf|eot|svg|png|jpg|mp4)$/,
         loader: 'file-loader'
       }, {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,

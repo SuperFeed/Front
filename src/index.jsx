@@ -4,13 +4,13 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router'
 import 'semantic-ui-css/semantic.css'
 
 import Container, { configureStore } from './Container'
-import App from './App'
+import Home from './Home'
 import Login from './Login'
 
 const SuperFeed = <Container store={configureStore()}>
   <Router history={browserHistory}>
     <Route path='/'>
-      <IndexRoute component={App} />
+      <IndexRoute component={Home} />
       <Route path='/login' component={Login} />
     </Route>
   </Router>
