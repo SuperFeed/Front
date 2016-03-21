@@ -1,15 +1,14 @@
 import { Reaction, groupActions } from 'redux-reaction'
 
 const initialState = {
-  loggedIn: false,
   accessToken: null,
   id: null,
   name: null
 }
 
 const login = Reaction('login', {
-  reducer (state, { payload: { accessToken, id, name }}) {
-    return { loggedIn: true, accessToken, id, name }
+  reducer (state, { payload: { accessToken, id, name } }) {
+    return { accessToken, id, name }
   }
 })
 
