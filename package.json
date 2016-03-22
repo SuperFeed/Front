@@ -13,10 +13,16 @@
   },
   "scripts": {
     "test": "standard | snazzy",
-    "start": "webpack-dev-server --history-api-fallback --hot --inline --progress --colors --port 3000",
-    "prebuild": "rimraf target",
-    "build": "cross-env NODE_ENV=production webpack -p --progress --colors",
-    "postbuild": "cp resources/* target"
+    "dev-client": "webpack-dev-server --history-api-fallback --hot --inline --progress --colors --port 3000",
+    "build-client": "cross-env NODE_ENV=production webpack",
+    "predev-server": "cross-env BABEL_ENV=server babel src -d _server",
+    "dev-server": "cross-env BABEL_ENV=server parallelshell \"babel --watch src -d _server\" \"nodemon --watch _server _server/server.js\"",
+    "build-server": "BABEL_ENV=server babel src -d target",
+    "predev": "rimraf _client _server",
+    "dev": "parallelshell \"npm run dev-client\" \"npm run dev-server\"",
+    "prebuild": "rimraf target && mkdirp target",
+    "build": "npm run build-server && npm run build-client",
+    "postbuild": "cp package.json target"
   },
   "devDependencies": {
     "babel-core": "^6.5.2",
@@ -24,7 +30,6 @@
     "babel-loader": "^6.2.3",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-runtime": "^6.5.2",
-    "babel-polyfill": "^6.5.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-react": "^6.5.0",
     "babel-preset-react-hmre": "^1.1.0",
@@ -37,10 +42,8 @@
     "html-webpack-template": "^4.0.0",
     "json-loader": "^0.5.4",
     "mkdirp": "^0.5.1",
+    "nodemon": "^1.9.0",
     "parallelshell": "^2.0.0",
-    "redux-devtools": "^3.1.1",
-    "redux-devtools-dock-monitor": "^1.0.1",
-    "redux-devtools-log-monitor": "^1.0.4",
     "rimraf": "^2.5.2",
     "snazzy": "^3.0.0",
     "standard": "^6.0.8",
@@ -50,17 +53,22 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-polyfill": "^6.5.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-drive-in": "^1.7.3",
     "react-facebook-login": "^2.1.3",
     "react-redux": "^4.4.0",
     "react-router": "^2.0.1",
     "redux": "^3.3.1",
     "redux-actions": "^0.9.1",
+    "redux-devtools": "^3.1.1",
+    "redux-devtools-dock-monitor": "^1.0.1",
+    "redux-devtools-log-monitor": "^1.0.4",
     "redux-promise": "^0.5.1",
     "redux-reaction": "0.0.1",
     "reselect": "^2.2.1",
-    "semantic-ui-css": "^2.1.8"
+    "semantic-ui-css": "^2.1.8",
+    "soular": "^0.3.5"
   }
 }

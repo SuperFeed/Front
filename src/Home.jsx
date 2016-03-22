@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import DriveIn from 'react-drive-in'
 import Login from './Login'
 import re, { selector } from './actions'
-
-import HeroVid from '../static/bg1.mp4'
 
 const styles = {
   header: {
@@ -39,7 +36,6 @@ export default class Home extends Component {
   render () {
     return <div>
       <div className='ui inverted center aligned'>
-        <DriveIn show={HeroVid} />
       </div>
 
       <div className='ui segment' style={styles.header}>

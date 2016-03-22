@@ -2,18 +2,19 @@
 
 let webpack = require('webpack')
 let path = require('path')
-let HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+const DEBUG = process.env.NODE_ENV !== 'production'
+
+const config = {
   entry: [
     'babel-polyfill',
-    path.join(__dirname, 'src', 'index.jsx')
+    path.join(__dirname, 'src', 'client.jsx')
   ],
   output: {
-    path: 'target',
+    path: DEBUG ? '_client' : 'target/static',
     filename: 'app.js'
   },
-  devtool: process.env.NODE_ENV !== 'production' ? '#eval-source-map' : '',
+  devtool: DEBUG ? '#eval-source-map' : '',
   module: {
     loaders: [
       {
@@ -23,20 +24,6 @@ module.exports = {
       }, {
         test: /\.json$/,
         loader: 'json'
-      }, {
-        test: /\.css$/,
-        loader: 'style!css-loader?modules',
-        exclude: /(node_modules|static)/
-      }, {
-        test: /\.css$/,
-        loader: 'style!css-loader',
-        exclude: /src/
-      }, {
-        test: /\.(ttf|eot|svg|png|jpg|mp4)$/,
-        loader: 'file-loader'
-      }, {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&minetype=application/font-woff'
       }
     ]
   },
@@ -45,15 +32,22 @@ module.exports = {
     modulesDirectories: ['node_modules']
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'SuperFeed',
-      inject: false,
-      appMountId: 'root',
-      template: 'node_modules/html-webpack-template/index.ejs',
-      mobile: true
-    }),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') }
     })
-  ]
+  ],
+  devServer: {
+    proxy: {
+      '*': 'http://localhost:3001'
+    }
+  }
 }
+
+if (!DEBUG) {
+  config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false,
+    mangle: false
+  }))
+}
+
+module.exports = config
