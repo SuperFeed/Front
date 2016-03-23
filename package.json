@@ -6,6 +6,9 @@
   "license": "MIT",
   "standard": {
     "parser": "babel-eslint",
+    "ignore": [
+      "test/*"
+    ],
     "globals": [
       "fetch",
       "FormData"
