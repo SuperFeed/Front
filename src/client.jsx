@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, match, browserHistory as history } from 'react-router'
-
 import routes from './routes'
 import Container, { configureStore } from './Container'
 

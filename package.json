@@ -19,14 +19,14 @@
     "dev-api": "cross-env BABEL_ENV=lambda nodemon --watch functions run-api.js",
     "dev-client": "webpack-dev-server --history-api-fallback --hot --inline --progress --colors --port 3000",
     "build-client": "cross-env NODE_ENV=production webpack",
-    "predev-server": "cross-env BABEL_ENV=server babel src -d _server",
+    "predev-server": "cross-env BABEL_ENV=server babel src -d _server && cp -r static _server",
     "dev-server": "cross-env BABEL_ENV=server parallelshell \"babel --watch src -d _server\" \"nodemon --watch _server _server/server.js\"",
     "build-server": "BABEL_ENV=server babel src -d target",
     "predev": "rimraf _client _server",
     "dev": "parallelshell \"npm run dev-client\" \"npm run dev-server\" \"npm run dev-api\"",
     "prebuild": "rimraf target && mkdirp target",
     "build": "npm run build-server && npm run build-client",
-    "postbuild": "cp package.json target && cp -r resources/. target"
+    "postbuild": "cp package.json target && cp -r resources/. target && cp -r static target"
   },
   "devDependencies": {
     "apex.js": "^1.1.0",
@@ -63,6 +63,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.5.0",
+    "neal-react": "^0.2.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-facebook-login": "^2.1.3",

@@ -1,131 +1,91 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React from 'react'
 import Login from './Login'
-import re, { selector } from './actions'
 
 const styles = {
-  header: {
-    height: '100vh',
-    backgroundColor: 'transparent',
-    border: 'none',
-    padding: '10em 0 0 0',
-    marginBottom: '0',
-    boxShadow: 'none'
+  masthead: {
+    backgroundImage: 'url(http://www.nealjs.com/img/hero-bg-01.jpg)',
+    backgroundSize: 'cover',
+    height: '98vh',
+    marginBottom: '3rem'
   },
-  banner: {
-    backgroundColor: 'rgba(0, 0, 0, .75)',
-    padding: '2em 0',
-    textAlign: 'center'
-  },
-  sf: {
-    color: 'white',
-    fontSize: '8vw',
-    fontWeight: '200',
-    marginBottom: '0'
-  },
-  sfSub: {
-    color: 'white',
-    fontSize: '2rem',
-    marginTop: '0',
-    marginBottom: '2em'
-  }
+  banner: { paddingTop: '10rem' },
+  h1: { fontSize: '4rem' },
+  h2: { fontSize: '1.5rem' },
+  footer: { marginTop: '2rem' }
 }
 
-@connect(selector, re.action)
-export default class Home extends Component {
-  render () {
-    return <div>
-      <div className='ui inverted center aligned'>
+export default function Home () {
+  return <div>
+    <div className="ui inverted vertical masthead center aligned segment" style={styles.masthead}>
+      <div className='ui text container' style={styles.banner}>
+        <h1 className='ui inverted header' style={styles.h1}>SuperFeed</h1>
+        <h2 style={styles.h2}>Community-focued hyperlocal social event feed</h2>
+        <br />
+        <Login />
       </div>
+    </div>
 
-      <div className='ui segment' style={styles.header}>
-        <div style={styles.banner}>
-          <h1 style={styles.sf}>SuperFeed</h1>
-          <h2 style={styles.sfSub}>Local information, delivered.</h2>
-          <Login />
-        </div>
-      </div>
-
+    <div className='ui container'>
       <div className='ui vertical stripe segment'>
-        <div className='ui middle aligned stackable grid container'>
-          <div className='row'>
-            <div className='eight wide column'>
-              <h3 className='ui header'>We Help Companies and Companions</h3>
-              <p>We can give your company superpowers to do things that they never thought possible. Let us delight your customers and empower your needs...through pure data analytics.</p>
-              <h3 className='ui header'>We Make Bananas That Can Dance</h3>
-              <p>Yes that's right, you thought it was the stuff of dreams, but even bananas can be bioengineered.</p>
-            </div>
-            <div className='six wide right floated column'>
-              <img src='assets/images/wireframe/white-image.png' className='ui large bordered rounded image' />
-            </div>
-          </div>
-          <div className='row'>
-            <div className='center aligned column'>
-              <a className='ui huge button'>Check Them Out</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='ui vertical stripe quote segment'>
-        <div className='ui equal width stackable internally celled grid'>
+        <div className='ui equal width stackable grid'>
           <div className='center aligned row'>
             <div className='column'>
-              <h3>"What a Company"</h3>
-              <p>That is what they all say about us</p>
+              <h2 className='ui center aligned icon header'>
+                <i className='circular calendar icon'></i>
+                Events
+              </h2>
+              <p>SuperFeed tracks events around you. Whether it's tracked on SuperFeed, or made on Facebook, SuperFeed will let you know what's going on.</p>
             </div>
             <div className='column'>
-              <h3>"I shouldn't have gone with their competitor."</h3>
-              <p>
-                <img src='assets/images/avatar/nan.jpg' className='ui avatar image' /> <b>Nan</b> Chief Fun Officer Acme Toys
-              </p>
+              <h2 className='ui center aligned icon header'>
+                <i className='circular home icon'></i>
+                Community
+              </h2>
+              <p>Connect with your community with SuperFeed!</p>
+            </div>
+            <div className='column'>
+              <h2 className='ui center aligned icon header'>
+                <i className='circular users icon'></i>
+                Friends
+              </h2>
+              <p>See what's up with your friends!</p>
             </div>
           </div>
         </div>
       </div>
 
-      <div className='ui vertical stripe segment'>
-        <div className='ui text container'>
-          <h3 className='ui header'>Breaking The Grid, Grabs Your Attention</h3>
-          <p>Instead of focusing on content creation and hard work, we have learned how to master the art of doing nothing by providing massive amounts of whitespace and generic content that can seem massive, monolithic and worth your attention.</p>
-          <a className='ui large button'>Read More</a>
-          <h4 className='ui horizontal header divider'>
-            <a href='#'>Case Studies</a>
-          </h4>
-          <h3 className='ui header'>Did We Tell You About Our Bananas?</h3>
-          <p>Yes I know you probably disregarded the earlier boasts as non-sequitor filler content, but its really true. It took years of gene splicing and combinatory DNA research, but our bananas can really dance.</p>
-          <a className='ui large button'>I'm Still Quite Interested</a>
-        </div>
+      <div className='ui vertical stripe center aligned segment'>
+        <h2>SuperFeed</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </div>
+    </div>
 
-      <div className='ui inverted vertical footer segment'>
-        <div className='ui container'>
-          <div className='ui stackable inverted divided equal height stackable grid'>
-            <div className='three wide column'>
-              <h4 className='ui inverted header'>About</h4>
-              <div className='ui inverted link list'>
-                <a href='#' className='item'>Sitemap</a>
-                <a href='#' className='item'>Contact Us</a>
-                <a href='#' className='item'>Religious Ceremonies</a>
-                <a href='#' className='item'>Gazebo Plans</a>
-              </div>
+
+    <div className='ui inverted vertical footer segment' style={styles.footer}>
+      <div className='ui container'>
+        <div className='ui stackable inverted divided equal height stackable grid'>
+          <div className='three wide column'>
+            <h4 className='ui inverted header'>About</h4>
+            <div className='ui inverted link list'>
+              <a href='https://github.com/SuperFeed/SuperFeed' className='item'>Source Code</a>
+              <a href='http://rdel.io' className='item'>Ryan Delaney</a>
+              <a href='#' className='item'>RPI</a>
             </div>
-            <div className='three wide column'>
-              <h4 className='ui inverted header'>Services</h4>
-              <div className='ui inverted link list'>
-                <a href='#' className='item'>Banana Pre-Order</a>
-                <a href='#' className='item'>DNA FAQ</a>
-                <a href='#' className='item'>How To Access</a>
-                <a href='#' className='item'>Favorite X-Men</a>
-              </div>
+          </div>
+          <div className='three wide column'>
+            <h4 className='ui inverted header'>Services</h4>
+            <div className='ui inverted link list'>
+              <a href='#' className='item'>Apps</a>
+              <a href='#' className='item'>Terms of Service</a>
+              <a href='#' className='item'>Privacy Policy</a>
             </div>
-            <div className='seven wide column'>
-              <h4 className='ui inverted header'>Footer Header</h4>
-              <p>Extra space for a call to action inside the footer that could help re-engage users.</p>
-            </div>
+          </div>
+          <div className='seven wide column'>
+            <h4 className='ui inverted header'>SuperFeed</h4>
+            <p>All content on this page is licensed under the MIT license.</p>
           </div>
         </div>
       </div>
     </div>
-  }
+  </div>
 }
