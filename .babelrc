@@ -4,6 +4,9 @@
   "env": {
     "development": {
       "presets": ["react-hmre"]
+    },
+    "lambda": {
+      "plugins": ["transform-regenerator", "syntax-async-functions", "transform-async-to-generator"]
     }
   }
 }
