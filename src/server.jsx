@@ -15,6 +15,15 @@ const APP_PORT = DEBUG ? 3001 : process.env.PORT || 8080
 
 soular('*')
 
+.use((ctx) => {
+  if (ctx.req.headers['x-forwarded-proto'] === 'http') return {
+    status: 302,
+    headers: { Location: 'https://' + ctx.req.headers.host + ctx.req.url },
+    body: '',
+    $force: true
+  }
+})
+
 .use(router(routes, (content) => {
   const store = configureStore()
 

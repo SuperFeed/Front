@@ -73,6 +73,6 @@
     "redux-promise": "^0.5.1",
     "redux-reaction": "0.0.1",
     "reselect": "^2.2.1",
-    "soular": "^0.3.5"
+    "soular": "^0.3.6"
   }
 }
