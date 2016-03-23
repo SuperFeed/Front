@@ -21,7 +21,7 @@ export default function Home () {
         <h1 className='ui inverted header' style={styles.h1}>SuperFeed</h1>
         <h2 style={styles.h2}>Community-focued hyperlocal social event feed</h2>
         <br />
-        <Login />
+        <Login auto={false} />
       </div>
     </div>
 

@@ -8,6 +8,6 @@ const req = (host) => ({
 })
 
 export const SF_API = req(process.env.NODE_ENV !== 'production'
-  ? '//localhost:3001'
+  ? '//localhost:3005'
   : '//superfeedapi.azurewebsites.net'
 )

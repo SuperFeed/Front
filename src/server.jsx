@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import 'isomorphic-fetch'
 
 import soular from 'soular'
 import serveStatic from 'soular/static'
@@ -57,4 +58,4 @@ soular('*')
 
 .listen(APP_PORT)
 
-.on('listening', () => console.log(`Listening at ${APP_PORT}`))
+.on('listening', () => console.log(`Server listening at ${APP_PORT}`))
